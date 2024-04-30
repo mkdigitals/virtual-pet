@@ -53,3 +53,37 @@ describe('eatAndGetFed', () => {
     expect(testObject.hunger).toEqual(0);
   });
 });
+
+describe('checkUp', () => {
+  it('tests the checkup Functionality', () => {
+    testObject = new Pet('Fido');
+    expect(testObject.age).toEqual(0);
+    expect(testObject.hunger).toEqual(0);
+    expect(testObject.fitness).toEqual(10);
+    testObject.growUp();
+    expect(testObject.age).toEqual(1);
+    expect(testObject.hunger).toEqual(5);
+    expect(testObject.fitness).toEqual(7);
+    expect(testObject.checkUp()).toEqual("I am hungry")
+    testObject.growUp();
+    expect(testObject.age).toEqual(2);
+    expect(testObject.hunger).toEqual(10);
+    expect(testObject.fitness).toEqual(4);
+    expect(testObject.checkUp()).toEqual("I am hungry")
+    testObject.growUp();
+    expect(testObject.age).toEqual(3);
+    expect(testObject.hunger).toEqual(15);
+    expect(testObject.fitness).toEqual(1);
+    expect(testObject.checkUp()).toEqual("I am hungry AND I need a walk")
+    testObject.feed();
+    testObject.feed();
+    testObject.feed();
+    testObject.feed();
+    expect(testObject.checkUp()).toEqual("I need a walk")
+    testObject.walk();
+    testObject.walk();
+    testObject.walk();
+    testObject.walk();
+    expect(testObject.checkUp()).toEqual("I feel great")
+  });
+});
